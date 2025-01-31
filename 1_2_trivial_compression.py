@@ -19,18 +19,18 @@ class CompressedGene:
     
     def decompress(self) -> str:
         gene: str = ""
-        for i in range(0, self.bit_string.bit_length()-1, 2) # sentinel
-        bits: int = self.bit_string >> i & 0b11 
-        if bits == 0b00: # A
-            gene += "A"
-        elif bits == 0b01: # A
-            gene += "C"
-        elif bits == 0b10: # A
-            gene += "G"
-        elif bits == 0b11: # A
-            gene += "T"
-        else:
-            raise ValueError("invalid bits:{}".format(bits))
+        for i in range(0, self.bit_string.bit_length()-1, 2): # sentinel
+            bits: int = self.bit_string >> i & 0b11 
+            if bits == 0b00: # A
+                gene += "A"
+            elif bits == 0b01: # A
+                gene += "C"
+            elif bits == 0b10: # A
+                gene += "G"
+            elif bits == 0b11: # A
+                gene += "T"
+            else:
+                raise ValueError("invalid bits:{}".format(bits))
         return gene[::-1]
     
     def __str__(self):
